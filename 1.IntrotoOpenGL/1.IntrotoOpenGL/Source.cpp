@@ -7,8 +7,7 @@
 #include <glm/ext.hpp>
 using glm::vec3;
 using glm::vec4;
-using glm::mat4;
-
+using glm::mat4;
 int main() {
 	float r = 0.5f;
 	float g = 0.5f;
@@ -30,28 +29,18 @@ int main() {
 		glfwDestroyWindow(window);
 		glfwTerminate();
 		return -3;
-	}
-	Gizmos::create();
-	mat4 view = glm::lookAt(vec3(10, 15, 20), vec3(0), vec3(0, 1, 0));
+	}	Gizmos::create();	mat4 view = glm::lookAt(vec3(10, 15, 20), vec3(0), vec3(0, 1, 0));
 	mat4 projection = glm::perspective(glm::pi<float>() * 0.25f,
-		16 / 9.f, 0.1f, 1000.f);
-
-	auto major = ogl_GetMajorVersion();
+		16 / 9.f, 0.1f, 1000.f);	auto major = ogl_GetMajorVersion();
 	auto minor = ogl_GetMinorVersion();
-	printf("GL: %i.%i\n", major, minor);
-
-	
-	
-
-	while (glfwWindowShouldClose(window) == false &&
+	printf("GL: %i.%i\n", major, minor);	
+		while (glfwWindowShouldClose(window) == false &&
 		glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS) {
 		// our game logic and update code goes here!
 		// so does our render code!
 		
 		glClearColor(r, g, b, 1);
-		glEnable(GL_DEPTH_TEST);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		/*r += 0.2f;
+		glEnable(GL_DEPTH_TEST);		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		/*r += 0.2f;
 		g += 0.1f;
 		b += 0.3f;
 		if (r > 1.0f)
@@ -89,6 +78,4 @@ int main() {
 	glfwDestroyWindow(window);
 	glfwTerminate();
 	return 0;
-}
-
-
+}
