@@ -53,8 +53,9 @@ int start()
 	sun = glm::mat4(1);
 	earth = sun * glm::translate(vec3(8, 0, 0));
 	moon = earth * glm::translate(vec3(0, 5, 0));
+	return 0;
 }
-void update()
+bool update()
 {
 	while (glfwWindowShouldClose(window) == false &&
 		glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS) 
@@ -100,12 +101,14 @@ void update()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+	return true;
 }
-void quit()
+bool quit()
 {
 	Gizmos::destroy();
 	glfwDestroyWindow(window);
 	glfwTerminate();
+	return true;
 }
 
 int main() 
