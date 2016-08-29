@@ -51,7 +51,7 @@ int start()
 	printf("GL: %i.%i\n", major, minor);
 
 	sun = glm::mat4(1);
-	earth = sun * glm::translate(vec3(5, 0, 0));
+	earth = sun * glm::translate(vec3(8, 0, 0));
 	moon = earth * glm::translate(vec3(0, 5, 0));
 }
 void update()
@@ -76,9 +76,9 @@ void update()
 		DeltaTime = CurrentTime - PreviousTime;
 		PreviousTime = CurrentTime;		
 
-		//printf("angle %f \n", angle);
-		sun *= glm::rotate(glm::radians(1.f) * DeltaTime , vec3(0, 1, 0));
-		//glm::mat4 model = glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
+		sun = sun * glm::rotate(glm::radians(100.f) * DeltaTime, vec3(0, 5, 0));
+		earth = sun * glm::translate(vec3(8, 0, 0));
+		moon = earth * glm::rotate(glm::radians(10.f) * DeltaTime, vec3(0, 8, 0)) * glm::translate(sun, vec3(3, 2, 0));
 
 		for (int i = 0; i < 21; ++i) 
 		{
@@ -92,8 +92,8 @@ void update()
 
 		//printf("%f, %f, %f \n", sun[3].x, sun[3].y, sun[3].z);
 		Gizmos::addSphere(vec3(sun[3]), 5, 40, 40, vec4(0.8f, 0.8f, 0.f, 1), &sun);
-		Gizmos::addSphere(vec3(earth[3]), 2, 40, 40, vec4(0.0f, 0.0f, 1.0f, 1), &earth);
-		Gizmos::addSphere(vec3(moon[3]), 1, 40, 40, vec4(0.5f, 0.5f, 0.5f, 1), &moon);
+		Gizmos::addSphere(vec3(earth[3]), 2, 40, 40, vec4(0.0f, 0.0f, 2.0f, 1), &earth);
+		Gizmos::addSphere(vec3(moon[3]), 1, 40, 40, vec4(0.5f, 0.5f, 0.5f, 3), &moon);
 
 		Gizmos::draw(projection * view);
 
